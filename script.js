@@ -99,3 +99,234 @@ buttons.forEach(button => {
   })
 
 })
+
+
+
+// DARK MODE
+
+const darkModeBtn =
+document.getElementById("darkModeBtn")
+
+
+darkModeBtn.onclick = () => {
+
+  document.body.classList.toggle("dark")
+
+}
+
+
+
+// CHAT OPEN
+
+const chatBubble =
+document.getElementById("chatBubble")
+
+const chatBox =
+document.getElementById("chatBox")
+
+
+chatBubble.onclick = () => {
+
+  if(chatBox.style.display === "block"){
+
+    chatBox.style.display = "none"
+
+  }
+
+  else{
+
+    chatBox.style.display = "block"
+
+  }
+
+}
+
+
+
+// CUSTOM CURSOR
+
+const cursor =
+document.querySelector(".cursor")
+
+
+document.addEventListener("mousemove",
+(e) => {
+
+  cursor.style.left = e.clientX + "px"
+
+  cursor.style.top = e.clientY + "px"
+
+})
+
+
+
+// REVEAL ANIMATION
+
+function reveal(){
+
+  const reveals =
+  document.querySelectorAll(".reveal")
+
+
+  reveals.forEach(reveal => {
+
+    const windowHeight =
+    window.innerHeight
+
+    const revealTop =
+    reveal.getBoundingClientRect().top
+
+
+    if(revealTop < windowHeight - 100){
+
+      reveal.classList.add("active")
+
+    }
+
+  })
+
+}
+
+window.addEventListener("scroll",
+reveal)
+
+reveal()
+
+
+
+// AI CHAT SYSTEM
+
+const sendBtn =
+document.getElementById("sendBtn")
+
+const userInput =
+document.getElementById("userInput")
+
+const messages =
+document.getElementById("messages")
+
+
+
+sendBtn.onclick = sendMessage
+
+userInput.addEventListener("keypress",
+(e) => {
+
+  if(e.key === "Enter"){
+
+    sendMessage()
+
+  }
+
+})
+
+
+
+async function sendMessage(){
+
+  let text =
+  userInput.value.trim()
+
+
+  if(text === "") return
+
+
+
+  messages.innerHTML += `
+
+  <div class="user-message">
+    ${text}
+  </div>
+
+  `
+
+
+
+  messages.scrollTop =
+  messages.scrollHeight
+
+
+
+  userInput.value = ""
+
+
+
+  try{
+
+
+
+    const response =
+    await fetch(
+
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCyD89K2aYlH2F-sXzRKVKc1pIctUIynNs",
+
+    {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+
+        contents: [
+
+          {
+            parts: [
+              { text: text }
+            ]
+          }
+
+        ]
+
+      })
+
+    })
+
+
+
+    const data =
+    await response.json()
+
+
+
+    let reply =
+    data.candidates[0].content.parts[0].text
+
+
+
+    messages.innerHTML += `
+
+    <div class="bot-message">
+      ${reply}
+    </div>
+
+    `
+
+
+
+    messages.scrollTop =
+    messages.scrollHeight
+
+
+
+  }
+
+
+
+  catch(error){
+
+
+
+    messages.innerHTML += `
+
+    <div class="bot-message">
+      Error connecting to AI 
+    </div>
+
+    `
+
+  }
+
+}
