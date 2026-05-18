@@ -240,7 +240,7 @@ async function sendMessage(){
     const response =
     await fetch(
 
-    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCyD89K2aYlH2F-sXzRKVKc1pIctUIynNs",
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=",
 
     {
 
