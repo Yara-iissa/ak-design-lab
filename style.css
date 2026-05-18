@@ -300,8 +300,8 @@ nav a:hover{
 
 .card img{
   width: 100%;
-  height: 700px;
-  object-fit: contain;
+  height: 900px;
+  object-fit:cover ;
   background: white;
   display: block;
   mix-blend-mode: multiply;
