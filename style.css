@@ -667,7 +667,7 @@ nav a:hover{
 
   .card img{
   height: 280px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
   .instagram-grid{
