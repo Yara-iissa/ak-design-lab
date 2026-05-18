@@ -22,7 +22,6 @@ body{
   background: #121821;
 }
 
-.dark .card,
 .dark .review,
 .dark #searchInput,
 .dark .chat-box{
@@ -30,6 +29,11 @@ body{
   color: white;
 }
 
+
+
+.dark .card{
+  background: white;
+}
 .dark .title,
 .dark .instagram h1,
 .dark .testimonials h1{
@@ -608,4 +612,8 @@ nav a:hover{
     width: 100%;
   }
 
+}
+.dark .review p,
+.dark .review h3{
+  color: white;
 }
