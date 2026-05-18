@@ -118,28 +118,10 @@ darkModeBtn.onclick = () => {
 
 // CHAT OPEN
 
-const chatBubble =
-document.getElementById("chatBubble")
+// CHAT OPEN
 
 const chatBox =
 document.getElementById("chatBox")
-
-
-chatBubble.onclick = () => {
-
-  if(chatBox.style.display === "block"){
-
-    chatBox.style.display = "none"
-
-  }
-
-  else{
-
-    chatBox.style.display = "block"
-
-  }
-
-}
 
 
 
@@ -328,5 +310,6 @@ async function sendMessage(){
     `
 
   }
-
 }
+reveal()
+
