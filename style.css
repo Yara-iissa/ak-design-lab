@@ -72,6 +72,31 @@ body{
 
 
 
+/* LOADER */
+
+.loader{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #243746;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  transition: 0.7s;
+}
+
+.loader img{
+  width: 170px;
+}
+
+.loader.hide{
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+
 /* HEADER */
 
 header{
@@ -266,12 +291,16 @@ nav a:hover{
 
 .card img{
   width: 100%;
-  height: 800px;
-  object-fit: cover;
-  display: block;
-  border-radius: 0;
+  height: 900px;
+  object-fit:cover ;
   background: white;
+  display: block;
+  mix-blend-mode: multiply;
 }
+.card:hover img{
+  transform: scale(1.03);
+}
+
 
 /* CARD OVERLAY */
 
@@ -294,11 +323,19 @@ nav a:hover{
 
 
 /* REVEAL */
+
 .reveal{
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  transform: translateY(60px);
   transition: 1s;
 }
+
+.reveal.active{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 
 /* TESTIMONIALS */
 
@@ -795,79 +832,14 @@ nav a:hover{
   line-height: 1.8;
   color: #555;
 }
-
-
-
-/* FAVORITE */
-
-/* FAVORITE */
-
-.favorite{
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 999;
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+.dark .about{
+  background: #1d2733;
 }
 
-.favorite:hover{
-  transform: scale(1.1);
+.dark .about h1{
+  color: white;
 }
 
-.favorite i{
-  font-size: 22px;
-  color: #243746;
-  transition: 0.3s;
-}
-
-
-
-/* FAVORITES PAGE */
-
-.favorites-title{
-  text-align: center;
-  font-size: 55px;
-  color: #243746;
-  margin: 70px 0;
-}
-
-
-
-/* DARK MODE */
-
-.dark .favorite{
-  background: white;
-}
-
-.dark .favorite i{
-  color: #243746;
-}
-
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-  .favorite{
-    width: 42px;
-    height: 42px;
-    top: 15px;
-    right: 15px;
-  }
-
-  .favorite i{
-    font-size: 18px;
-  }
-
-
+.dark .about p{
+  color: #d7dde2;
 }
