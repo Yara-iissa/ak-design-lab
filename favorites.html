@@ -22,6 +22,14 @@
 
 
 
+  <!-- PAGE TRANSITION -->
+
+  <div class="page-transition"></div>
+
+
+
+  <!-- HEADER -->
+
   <header>
 
     <div class="logo">
@@ -44,6 +52,8 @@
 
 
 
+  <!-- TITLE -->
+
   <h1 class="title">
 
     Favorite Products ❤️
@@ -51,6 +61,8 @@
   </h1>
 
 
+
+  <!-- FAVORITES -->
 
   <div class="products"
   id="favoritesContainer">
@@ -61,38 +73,51 @@
 
   <script>
 
-    const favoritesContainer =
-    document.getElementById("favoritesContainer")
+  const favoritesContainer =
+  document.getElementById("favoritesContainer")
 
 
 
-    let storedFavorites =
-    JSON.parse(localStorage.getItem("favorites"))
-    || []
+  let storedFavorites =
+  JSON.parse(localStorage.getItem("favorites"))
+  || []
 
 
+
+  function displayFavorites(){
+
+
+    favoritesContainer.innerHTML = ""
+
+
+
+    // EMPTY
 
     if(storedFavorites.length === 0){
 
       favoritesContainer.innerHTML = `
 
       <h2 style="
-      text-align:center;
       width:100%;
+      text-align:center;
       color:#243746;
-      margin-top:50px;">
+      margin-top:60px;">
 
-      No favorite products yet
+      No favorite products yet ❤️
 
       </h2>
 
       `
 
+      return
+
     }
 
 
 
-    storedFavorites.forEach(product => {
+    // SHOW FAVORITES
+
+    storedFavorites.forEach((product,index) => {
 
       favoritesContainer.innerHTML += `
 
@@ -100,17 +125,72 @@
 
         <img src="${product.image}">
 
+
+
         <div class="card-overlay">
 
           <h2>${product.name}</h2>
 
         </div>
 
+
+
+        <button
+        onclick="removeFavorite(${index})"
+
+        style="
+        position:absolute;
+        top:20px;
+        right:20px;
+        width:45px;
+        height:45px;
+        border:none;
+        border-radius:50%;
+        background:red;
+        color:white;
+        cursor:pointer;
+        z-index:999;
+        font-size:18px;">
+
+        <i class="fa-solid fa-trash"></i>
+
+        </button>
+
       </div>
 
       `
 
     })
+
+  }
+
+
+
+  // REMOVE FAVORITE
+
+  function removeFavorite(index){
+
+    storedFavorites.splice(index,1)
+
+
+
+    localStorage.setItem(
+
+      "favorites",
+
+      JSON.stringify(storedFavorites)
+
+    )
+
+
+
+    displayFavorites()
+
+  }
+
+
+
+  displayFavorites()
 
   </script>
 
