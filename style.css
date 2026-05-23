@@ -42,19 +42,6 @@ body{
 
 
 
-/* CURSOR */
-
-.cursor{
-  width: 20px;
-  height: 20px;
-  border: 2px solid #243746;
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%,-50%);
-  z-index: 99999;
-}
-
 
 
 /* PAGE TRANSITION */
@@ -823,4 +810,50 @@ nav a:hover{
     bottom: 80px;
   }
 
+}
+/* ABOUT */
+
+.about{
+  padding: 100px 20px;
+  background: white;
+  text-align: center;
+}
+
+.about h1{
+  font-size: 50px;
+  color: #243746;
+  margin-bottom: 30px;
+}
+
+.about p{
+  max-width: 900px;
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.8;
+  color: #555;
+}
+
+
+
+/* FAVORITE */
+
+.favorite{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.favorite i{
+  font-size: 20px;
+  color: #243746;
 }
